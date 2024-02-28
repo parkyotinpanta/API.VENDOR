@@ -1,6 +1,6 @@
 const { status } = require('init')
 const knex = require('../../config/kenx')
-const { insertVendor,whereVendor,updeteVendor,removeVendor } = require('../../service/vendor/insert')
+const { insertVendor, whereVendor, updeteVendor, removeVendor } = require('../../service/vendor/insert')
 
 
 // insert
@@ -11,14 +11,14 @@ const insert = async (req, res) => {
 }
 // wherelike
 const where = async (req, res) => {
-    const {status,data} = await whereVendor(req.body)
-    return res.status(status).send(data)    
+    const { status, data } = await whereVendor(req.body)
+    return res.status(status).send(data)
 }
 // updete
 const update = async (req, res) => {
     const status = await updeteVendor(req.body)
     return res.status(status).send(status)
-    
+
     // del
 }
 // del
@@ -26,6 +26,10 @@ const remove = async (req, res) => {
     const status = await removeVendor(req.body)
     return res.status(status).send(status)
 }
+const selete = async (req, res) => {
+    const star = await knex.select()
+        .table('dbo')
+    return res.status(200).json(star)
+}
 
-
-module.exports = { insert, update, remove, where }
+module.exports = { insert, update, remove, where, selete }
