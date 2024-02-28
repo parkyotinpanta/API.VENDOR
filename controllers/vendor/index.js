@@ -1,4 +1,3 @@
-const { status } = require('init')
 const knex = require('../../config/kenx')
 const { insertVendor, whereVendor, updeteVendor, removeVendor } = require('../../service/vendor/insert')
 
