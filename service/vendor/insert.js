@@ -66,7 +66,6 @@ const insertVendor = async (item) => {
     return statusinsert
 }
 const whereVendor = async (item) => {
-    console.log(item)
     const { pre_name } = item
     const wherelike = ` SELECT * FROM dbo WHERE pre_name LIKE ? `;
     const searchlike = `%${pre_name}%`
