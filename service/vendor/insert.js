@@ -156,7 +156,14 @@ const removeVendor = async (item) => {
         })
     return statusdelete
 }
-
-module.exports = { insertVendor, whereVendor, updeteVendor, removeVendor }
+const wherelike = async(item)=>{
+     const { search } = item
+     const sql = 'SELECT * FROM `dbo` WHERE `pre_name` LIKE ? OR `add_phone` LIKE ? OR `branch_no` LIKE ?';
+     const searchlike = `%${search}%`
+     const objvendor = await knex.raw(sql,[searchlike,searchlike,searchlike])
+    return objvendor[0]
+     
+}
+module.exports = { insertVendor, whereVendor, updeteVendor, removeVendor,wherelike }
 
 

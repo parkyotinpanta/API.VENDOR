@@ -1,5 +1,5 @@
 const knex = require('../../config/kenx')
-const { insertVendor, whereVendor, updeteVendor, removeVendor } = require('../../service/vendor/insert')
+const { insertVendor, whereVendor, updeteVendor, removeVendor,wherelike } = require('../../service/vendor/insert')
 
 
 // insert
@@ -30,5 +30,9 @@ const selete = async (req, res) => {
         .table('dbo')
     return res.status(200).json(star)
 }
+const search = async (req, res) => {
+    const searchvendor =  await wherelike(req.body)
+      return res.status(200).send(searchvendor)
+}
 
-module.exports = { insert, update, remove, where, selete }
+module.exports = { insert, update, remove, where, selete, search }
